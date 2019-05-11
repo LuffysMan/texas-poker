@@ -3,17 +3,28 @@ package com.thoughtworks;
 import java.lang.String;
 
 public class Winner {
-    public Side side;
-    public Rank rank;
+    public Side m_Side;
+    public Rank m_Rank;
     public Card winCard;
     public  Winner(){
-        side = Side.Tie;
-        rank = Rank.high_card;
-        winCard = new Card("2S");
+        m_Side = Side.Tie;
+        m_Rank = Rank.high_card;
+        winCard = null;
     }
 
     public String getWinnerInfo(){
-        String winnerInfo = side.toString() + " wins - " + rank.toString() + ": " + winCard.getString();
+        String winnerInfo = null;
+        if (Side.Tie == m_Side){
+//            winnerInfo = m_Side.toString() + " wins - " + m_Rank.toString() + ": " + winCard.getString();
+            winnerInfo = "Tie";
+        }
+        else if(null == winCard){
+            winnerInfo = m_Side.toString() + " wins - " + m_Rank.toString();
+        }
+        else{
+            winnerInfo = m_Side.toString() + " wins - " + m_Rank.toString() + ": " + winCard.getString();
+        }
+
         return winnerInfo;
     }
 }
